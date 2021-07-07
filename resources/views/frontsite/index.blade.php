@@ -1,5 +1,8 @@
 @extends('frontsite.layout.master')
 @section('content')
+
+
+    <!-- // Page Wrapper -->
     <div class="page-wrapper">
 
         <!-- Post Slider -->
@@ -9,56 +12,18 @@
             <i class="fas fa-chevron-right next"></i>
 
             <div class="post-wrapper">
-
+                @foreach($post as $pos)
                 <div class="post">
-                    <img src="images/image_1.png" alt="" class="slider-image">
+                    <img src="{{asset('post_images/'.$pos->large_image)}}" alt="" class="slider-image">
                     <div class="post-info">
-                        <h4><a href="single.blade.php">One day your life will flash before your eyes</a></h4>
-                        <i class="far fa-user"> Awa Melvine</i>
+                        <h4><a href="{{route('frontsite.single',$pos->id)}}">{{$pos->title}}</a></h4>
+{{--                        <i class="far fa-user"> Awa Melvine</i>--}}
                         &nbsp;
-                        <i class="far fa-calendar"> Mar 8, 2019</i>
+                        <i class="far fa-calendar">{{$pos->created_at}}</i>
                     </div>
                 </div>
+                @endforeach
 
-                <div class="post">
-                    <img src="images/image_1.png" alt="" class="slider-image">
-                    <div class="post-info">
-                        <h4><a href="single.blade.php">One day your life will flash before your eyes</a></h4>
-                        <i class="far fa-user"> Awa Melvine</i>
-                        &nbsp;
-                        <i class="far fa-calendar"> Mar 8, 2019</i>
-                    </div>
-                </div>
-
-                <div class="post">
-                    <img src="images/image_1.png" alt="" class="slider-image">
-                    <div class="post-info">
-                        <h4><a href="single.blade.php">One day your life will flash before your eyes</a></h4>
-                        <i class="far fa-user"> Awa Melvine</i>
-                        &nbsp;
-                        <i class="far fa-calendar"> Mar 8, 2019</i>
-                    </div>
-                </div>
-
-                <div class="post">
-                    <img src="images/image_1.png" alt="" class="slider-image">
-                    <div class="post-info">
-                        <h4><a href="single.blade.php">One day your life will flash before your eyes</a></h4>
-                        <i class="far fa-user"> Awa Melvine</i>
-                        &nbsp;
-                        <i class="far fa-calendar"> Mar 8, 2019</i>
-                    </div>
-                </div>
-
-                <div class="post">
-                    <img src="images/image_1.png" alt="" class="slider-image">
-                    <div class="post-info">
-                        <h4><a href="single.blade.php">One day your life will flash before your eyes</a></h4>
-                        <i class="far fa-user"> Awa Melvine</i>
-                        &nbsp;
-                        <i class="far fa-calendar"> Mar 8, 2019</i>
-                    </div>
-                </div>
 
 
             </div>
@@ -72,74 +37,33 @@
             <!-- Main Content -->
             <div class="main-content">
                 <h1 class="recent-post-title">Recent Posts</h1>
-
+                @foreach($post as $pos)
                 <div class="post clearfix">
-                    <img src="images/image_3.png" alt="" class="post-image">
+                    <img  src="{{asset('post_images/'.$pos->large_image)}}" alt="" class="post-image">
                     <div class="post-preview">
-                        <h2><a href="single.hmtl">The strongest and sweetest songs yet remain to be sung</a></h2>
-                        <i class="far fa-user"> Awa Melvine</i>
+                        <h2><a href="{{route('frontsite.single',$pos->id)}}">{{$pos->title}}</a></h2>
+{{--                        <i class="far fa-user"> Awa Melvine</i>--}}
                         &nbsp;
-                        <i class="far fa-calendar"> Mar 11, 2019</i>
+                        <i class="far fa-calendar">{{$pos->created_at}}</i>
                         <p class="preview-text">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                            Exercitationem optio possimus a inventore maxime laborum.
+                            {{substr($pos->body, 0,150).'...'}}
                         </p>
-                        <a href="single.blade.php" class="btn read-more">Read More</a>
+                        <a href="{{route('frontsite.single',$pos->id)}}" class="btn read-more">Read More</a>
                     </div>
                 </div>
-
-                <div class="post clearfix">
-                    <img src="images/image_4.png" alt="" class="post-image">
-                    <div class="post-preview">
-                        <h2><a href="single.hmtl">The strongest and sweetest songs yet remain to be sung</a></h2>
-                        <i class="far fa-user"> Awa Melvine</i>
-                        &nbsp;
-                        <i class="far fa-calendar"> Mar 11, 2019</i>
-                        <p class="preview-text">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                            Exercitationem optio possimus a inventore maxime laborum.
-                        </p>
-                        <a href="single.blade.php" class="btn read-more">Read More</a>
-                    </div>
-                </div>
-                <div class="post clearfix">
-                    <img src="images/image_3.png" alt="" class="post-image">
-                    <div class="post-preview">
-                        <h2><a href="single.hmtl">The strongest and sweetest songs yet remain to be sung</a></h2>
-                        <i class="far fa-user"> Awa Melvine</i>
-                        &nbsp;
-                        <i class="far fa-calendar"> Mar 11, 2019</i>
-                        <p class="preview-text">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                            Exercitationem optio possimus a inventore maxime laborum.
-                        </p>
-                        <a href="single.blade.php" class="btn read-more">Read More</a>
-                    </div>
-                </div>
-                <div class="post clearfix">
-                    <img src="images/image_3.png" alt="" class="post-image">
-                    <div class="post-preview">
-                        <h2><a href="single.hmtl">The strongest and sweetest songs yet remain to be sung</a></h2>
-                        <i class="far fa-user"> Awa Melvine</i>
-                        &nbsp;
-                        <i class="far fa-calendar"> Mar 11, 2019</i>
-                        <p class="preview-text">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                            Exercitationem optio possimus a inventore maxime laborum.
-                        </p>
-                        <a href="single.blade.php" class="btn read-more">Read More</a>
-                    </div>
-                </div>
-
+                @endforeach
             </div>
+
             <!-- // Main Content -->
 
             <div class="sidebar">
 
                 <div class="section search">
                     <h2 class="section-title">Search</h2>
-                    <form action="index.blade.php" method="post">
-                        <input type="text" name="search-term" class="text-input" placeholder="Search...">
+                    <form action="{{route('frontsite.search')}}" method="get">
+                        @csrf
+{{--                        @method('PUT')--}}
+                        <input type="text" name="search" class="text-input" placeholder="Search...">
                     </form>
                 </div>
 
@@ -147,13 +71,9 @@
                 <div class="section topics">
                     <h2 class="section-title">Topics</h2>
                     <ul>
-                        <li><a href="#">Poems</a></li>
-                        <li><a href="#">Quotes</a></li>
-                        <li><a href="#">Fiction</a></li>
-                        <li><a href="#">Biography</a></li>
-                        <li><a href="#">Motivation</a></li>
-                        <li><a href="#">Inspiration</a></li>
-                        <li><a href="#">Life Lessons</a></li>
+                        @foreach($category as $cat)
+                        <li><a href="{{route('frontsite.category',$cat->id)}}">{{$cat->title}}</a></li>
+                        @endforeach
                     </ul>
                 </div>
 

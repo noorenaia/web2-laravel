@@ -6,47 +6,19 @@ use App\Http\Controllers\Controller;
 use App\Models\category;
 use App\Models\post;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
-
-    public  function orm(){
-
-        #insert into database
-        #insert 1
-//        $category = new category();
-//        $category->title = 'finance';
-//        $category->code='FIN';
-//        $category->save();
-
-            #insert 2
-//        category::create([
-//            'title'=>'category',
-//            'code'=>'cat'
-//        ]);
-//$categories = category::all();
-//foreach ($categories as $category){
-//    echo $category->title. "  ".$category->code."<br>";
-//}
-//dd();
-//dd($categories->toArray());
-
-    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        return view('admin.posts.index');
-
-//         $posts= DB::table('posts')->first('id',3);
-//         dd($posts);
-//        $posts = DB::table('post s')->get();
-//        foreach ($posts as $post){
-//            echo $post->title.'<br>';
-//        }
-        #database via model
-//        $posts = post::all();
-//        dd($posts->toArray());
-//        return view('admin.posts.index');
+//        $posts = post::orderBy('created_at','desc')->get();
+        $posts=post::orderBy('created_at','desc')->paginate(20);
+        return view('admin.posts.index',compact('posts'));
     }
 
     /**
@@ -56,7 +28,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $categories = category::all();
+        return view('admin.posts.add',compact('categories'));
     }
 
     /**
@@ -67,16 +40,32 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+ //        dd($request->toArray());
+        $request->validate([
+           'title'=>'required|unique:posts|max:100|min:10' ,
+           'body'=> 'required|',
+           'category_id'=>'required|integer'
+        ]);
+        $post = new post();
+        $post->title=$request->title;
+        $post->body=$request->body;
+        $post->category_id=$request->category_id;
+        $post_image = $request->file('post_image');
+        $file_name = $post->title.time().'.'.$post_image->extension();
+        $post_image->move('post_images',$file_name);
+        $post->large_image=$file_name;
+        $post->save();
+        return redirect()->route('post.index')->with('success' , 'The post has been added successfully !');
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(post $post)
     {
         //
     }
@@ -84,34 +73,43 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(post $post)
     {
-        //
+        $categories = category::all();
+        return view('admin.posts.edit',compact('categories','post'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, post $post)
     {
-        //
+        $post->title=$request->title;
+        $post->body=$request->body;
+        $post->category_id=$request->category_id;
+        $post->save();
+        return redirect()->route('post.index');
+
+//        dd($request->toArray());
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('post.index');
+
     }
 }

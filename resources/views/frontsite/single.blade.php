@@ -9,17 +9,14 @@
             <!-- Main Content Wrapper -->
             <div class="main-content-wrapper">
                 <div class="main-content single">
-                    <h1 class="post-title">This is the title of the Post</h1>
+                    <h1 class="post-title">{{$post->title}}</h1>
 
                     <div class="post-content">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione modi error rerum possimus animi! Eos!
-                        </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam placeat at molestias vitae! Ipsa
-                            repudiandae praesentium nobis nesciunt, iusto pariatur tenetur commodi! Iste sequi placeat dolores nulla,
-                            expedita voluptas officiis.</p>
+{{--                        <p>{{$pos->title}}--}}
+{{--                        </p>--}}
+                        <p>{{$post->body}}</p>
 
                     </div>
-
                 </div>
             </div>
             <!-- // Main Content -->
@@ -34,54 +31,44 @@
                 </div>
 
 
-                <div class="section popular">
-                    <h2 class="section-title">Popular</h2>
-
-                    <div class="post clearfix">
-                        <img src="images/image_1.png" alt="">
-                        <a href="" class="title">
-                            <h4>How to overcome your fears</h4>
-                        </a>
-                    </div>
-                    <div class="post clearfix">
-                        <img src="images/image_1.png" alt="">
-                        <a href="" class="title">
-                            <h4>How to overcome your fears</h4>
-                        </a>
-                    </div>
-                    <div class="post clearfix">
-                        <img src="images/image_1.png" alt="">
-                        <a href="" class="title">
-                            <h4>How to overcome your fears</h4>
-                        </a>
-                    </div>
-                    <div class="post clearfix">
-                        <img src="images/image_1.png" alt="">
-                        <a href="" class="title">
-                            <h4>How to overcome your fears</h4>
-                        </a>
-                    </div>
-                    <div class="post clearfix">
-                        <img src="images/image_1.png" alt="">
-                        <a href="" class="title">
-                            <h4>How to overcome your fears</h4>
-                        </a>
-                    </div>
+{{--                <div class="section popular">--}}
+{{--                    <h2 class="section-title">Popular</h2>--}}
+{{--                    <div class="post clearfix">--}}
+{{--                        @foreach($post as $pos)--}}
+{{--                        <img src="{{asset('post_images/'.$post->large_image)}}" alt="">--}}
+{{--                        <a href="{{route('frontsite.single',$post->id)}}" class="title">--}}
+{{--                            <h4>{{$post->title}}</h4>--}}
+{{--                        </a>--}}
+{{--                        @endforeach--}}
+{{--                    </div>--}}
+{{--                    <div class="post clearfix">--}}
+{{--                        <img src="{{asset('post_images/'.$post->large_image)}}" alt="">--}}
+{{--                        <a href="{{route('frontsite.single',$post->id)}}" class="title">--}}
+{{--                            <h4>{{$post->title}}</h4>--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
+{{--                    <div class="post clearfix">--}}
+{{--                        <img src="images/image_1.png" alt="">--}}
+{{--                        <a href="" class="title">--}}
+{{--                            <h4>How to overcome your fears</h4>--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
+{{--                    <div class="post clearfix">--}}
+{{--                        <img src="images/image_1.png" alt="">--}}
+{{--                        <a href="" class="title">--}}
+{{--                            <h4>How to overcome your fears</h4>--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
+{{--                    <div class="post clearfix">--}}
+{{--                        <img src="images/image_1.png" alt="">--}}
+{{--                        <a href="" class="title">--}}
+{{--                            <h4>How to overcome your fears</h4>--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
 
                 </div>
 
-                <div class="section topics">
-                    <h2 class="section-title">Topics</h2>
-                    <ul>
-                        <li><a href="#">Poems</a></li>
-                        <li><a href="#">Quotes</a></li>
-                        <li><a href="#">Fiction</a></li>
-                        <li><a href="#">Biography</a></li>
-                        <li><a href="#">Motivation</a></li>
-                        <li><a href="#">Inspiration</a></li>
-                        <li><a href="#">Life Lessons</a></li>
-                    </ul>
-                </div>
+
             </div>
             <!-- // Sidebar -->
 

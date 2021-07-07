@@ -9,7 +9,17 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+
     use HasFactory, Notifiable;
+    public function image(){
+        return $this->morphOne(image::class,'imageable');
+    }
+    public function roles(){
+        return $this->belongsToMany(role::class);
+    }
+    public function phone(){
+        return $this->hasOne(phone::class);
+    }
 
     /**
      * The attributes that are mass assignable.

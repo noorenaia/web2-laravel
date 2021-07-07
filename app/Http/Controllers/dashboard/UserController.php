@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\post;
 use App\Models\user;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -15,7 +18,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+//        $users = user::orderBy('created_at','desc')->get();
+        $users = user::orderBy('created_at','desc')->paginate();
+        return view('admin.users.index',compact('users'));
     }
 
     /**
@@ -25,7 +30,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.add');
+
     }
 
     /**
@@ -36,7 +42,19 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+//        dd($request->toArray());
+        $request->validate([
+            'name'=>'required|unique:users|max:20|min:3' ,
+            'email'=> 'required|unique:users|email',
+            'password'=>'required|min:6'
+        ]);
+        $user = new User();
+        $user->name=$request->name;
+        $user->email=$request->email;
+        $user->password=$request->password;
+        $user->password=Hash::make($request->password);
+        $user->save();
+        return redirect()->route('user.index')->with('success' , 'The user has been added successfully !');
     }
 
     /**
@@ -58,7 +76,8 @@ class UserController extends Controller
      */
     public function edit(user $user)
     {
-        //
+        return view('admin.users.edit',compact('user'));
+
     }
 
     /**
@@ -70,7 +89,11 @@ class UserController extends Controller
      */
     public function update(Request $request, user $user)
     {
-        //
+        $user->name=$request->name;
+        $user->email=$request->email;
+        $user->password=$request->password;
+        $user->save();
+        return redirect()->route('user.index');
     }
 
     /**
@@ -81,6 +104,8 @@ class UserController extends Controller
      */
     public function destroy(user $user)
     {
-        //
+        $user->delete();
+        return redirect()->route('user.index');
+
     }
 }

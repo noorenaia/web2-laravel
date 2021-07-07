@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css?family=Candal|Lora" rel="stylesheet">
 
     <!-- Custom Styling -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
     <title>Noor Blog - @yield('title')</title>
 </head>

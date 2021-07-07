@@ -7,7 +7,7 @@
             <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-            <a href="#" class="d-block">Alexander Pierce</a>
+            <a href="#" class="d-block">{{Auth::User()->name}}</a>
         </div>
     </div>
 
@@ -16,35 +16,37 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
-
+            <li class="nav-item has-treeview">
+                <a href="{{route('logout')}}" class="nav-link">
+                    <i class="nav-icon fas fa-copy"></i>
+                    <p>
+                        logout
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+            </li>
             <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-copy"></i>
                     <p>
                         Posts
                         <i class="fas fa-angle-left right"></i>
-                        <span class="badge badge-info right">6</span>
                     </p>
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="pages/layout/top-nav.html" class="nav-link">
+                        <a href="{{route('post.create')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>add post</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+                        <a href="{{route('post.index')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>list post</p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="pages/layout/boxed.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>update post</p>
-                        </a>
-                    </li>
+
 
                 </ul>
             </li>
@@ -58,23 +60,18 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="pages/charts/chartjs.html" class="nav-link">
+                        <a href="{{route('category.create')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>add category</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="pages/charts/flot.html" class="nav-link">
+                        <a href="{{route('category.index')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>list category</p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="pages/charts/inline.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>update category</p>
-                        </a>
-                    </li>
+
                 </ul>
             </li>
             <li class="nav-item has-treeview">
@@ -88,19 +85,14 @@
                 <ul class="nav nav-treeview">
 
                     <li class="nav-item">
-                        <a href="pages/UI/icons.html" class="nav-link">
+                        <a href="{{route('user.create')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>add user</p>
                         </a>
                     </li>
+
                     <li class="nav-item">
-                        <a href="pages/UI/buttons.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>update user</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/UI/sliders.html" class="nav-link">
+                        <a href="{{route('user.index')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>list users</p>
                         </a>

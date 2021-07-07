@@ -25,6 +25,7 @@ class CommentFactory extends Factory
         return [
             'body'=>$this->faker->text,
             'post_id'=>post::all()->random(),
+
         ];
     }
 }

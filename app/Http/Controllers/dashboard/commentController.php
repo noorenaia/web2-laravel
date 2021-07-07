@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\comment;
 use Illuminate\Http\Request;
 
 class commentController extends Controller
@@ -14,7 +15,7 @@ class commentController extends Controller
      */
     public function index()
     {
-        //
+        return view('frontsite.layout.footer');
     }
 
     /**
@@ -24,7 +25,7 @@ class commentController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -35,7 +36,13 @@ class commentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+//        $comment = new comment();
+//        $comment->body=$request->body;
+//        $comment->post_id=$request->post_id;
+//        $comment->save();
+//        return redirect()->route('comment.comment');
+
+
     }
 
     /**

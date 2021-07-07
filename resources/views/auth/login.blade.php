@@ -16,41 +16,30 @@
   <!-- Custom Styling -->
   <link rel="stylesheet" href="css/style.css">
 
-  <title>Register</title>
+  <title>Login</title>
 </head>
 
 <body>
 @include('frontsite.layout.header')
-
   <div class="auth-content">
 
-    <form action="register.blade.php" method="post">
-      <h2 class="form-title">Register</h2>
-
-      <!-- <div class="msg error">
-        <li>Username required</li>
-      </div> -->
+    <form action="{{route('authenticate')}}" method="post">
+        @csrf
+      <h2 class="form-title">Login</h2>
+        @include('admin.layout.messages')
 
       <div>
         <label>Username</label>
-        <input type="text" name="username" class="text-input">
-      </div>
-      <div>
-        <label>Email</label>
-        <input type="email" name="email" class="text-input">
+        <input type="text"  class="text-input" name="name">
       </div>
       <div>
         <label>Password</label>
-        <input type="password" name="password" class="text-input">
+        <input type="password" class="text-input" name="password">
       </div>
       <div>
-        <label>Password Confirmation</label>
-        <input type="password" name="passwordConf" class="text-input">
+        <button type="submit" name="login-btn" class="btn btn-big">Login</button>
       </div>
-      <div>
-        <button type="submit" name="register-btn" class="btn btn-big">Register</button>
-      </div>
-      <p>Or <a href="{{route('frontsite.login')}}">Sign In</a></p>
+      <p>Or <a href="{{route('register')}}">Sign Up</a></p>
     </form>
 
   </div>

@@ -22,8 +22,8 @@ class CategoryFactory extends Factory
     public function definition()
     {
         return [
-            'title'=>$this->faker->sentence,
-            'code'=>$this->faker->randomNumber(3)
+            'title'=>$this->faker->sentence
+//            'code'=>$this->faker->randomNumber(3)
 
         ];
     }
